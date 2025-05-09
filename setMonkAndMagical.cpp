@@ -10,7 +10,7 @@ int main(){
 		cin >> n >> k;
 		multiset<long long> s;
 		for(int i=0; i<n; i++){
-			int candy;
+			long long candy;
 			cin >> candy;
 
 			s.insert(candy);
@@ -19,7 +19,7 @@ int main(){
 		long long totalC = 0;
 		for(int i=0; i<k; i++){
 			auto last_it = (--s.end());
-			int candyC = *last_it;
+			long long candyC = *last_it;
 			totalC += candyC;
 			s.erase(last_it);
 			s.insert(candyC/2);
