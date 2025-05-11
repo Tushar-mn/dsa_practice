@@ -13,7 +13,7 @@ int main(){
 	int n;
 	cin >> n;
 
-	set<pair<int, string>, cmp> s;
+	multiset<pair<int, string>, cmp> s;
 	for(int i=0; i<n; i++){
 		string str;
 		int score;
