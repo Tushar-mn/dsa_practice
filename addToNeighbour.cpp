@@ -1,17 +1,39 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int operations(vector<int>&arr, int i, int op, vector<int>&sum){
-
-    if(i == arr.size()){
-        return op;
+bool totalSum(vector<int> &a, int target, int i, int currentSum){
+    if(i == a.size()){
+        return currentSum == 0;
     }
 
-    sum.push_back(arr[i]);
-    operations(arr, i-1, op+1, sum+arr[i]);
-    sum.pop_back();
-    operations(arr, i+1, op+1, sum+arr[i]);
+    currentSum += a[i];
+    if(currentSum > target){
+        return false;
+    }
 
+    if(currentSum == target){
+        return totalSum(a, target, i+1, 0);
+    } else {
+        return totalSum(a, target, i+1, currentSum);
+    }
+}
+
+int minOperation(vector<int> &a){
+    int n = a.size();
+    int total = 0;
+    for(int i: a){
+        total += i;
+    }
+
+    for(int k=n; k>0; k--){
+        if(total%k != 0) continue;
+        int target = total/k;
+
+        if(totalSum(a, target, 0, 0)){
+            return n-k;
+        }
+    }
+    return n-1;
 }
 
 int main(){
@@ -21,14 +43,11 @@ int main(){
     while(t--){
         int n;
         cin >> n;
-        vector<int> arr(n);
+        vector<int> a(n);
         for(int i=0; i<n; i++){
-            cin >> arr[i];
+            cin >> a[i];
         }
 
-        int op = 0;
-        vector<int> sum;
-        int ops = operations(arr, 0, op, sum);
-        cout << ops << endl;
+        cout << minOperation(a) << endl;
     }
 }
