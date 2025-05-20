@@ -4,7 +4,7 @@
 class Solution {
 public:
     int firstBadVersion(int n) {
-        int lo = 0;
+        int lo = 1;
         int hi = n;
         int ans = 0;
 
