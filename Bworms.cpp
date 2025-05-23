@@ -38,7 +38,6 @@ int main(){
 				lo = mid + 1;
 			}
 		}
-
 		cout << ans+1 << endl;
 	}
 }
