@@ -2,11 +2,11 @@
 using namespace std;
 
 const int MAX = 1e6+5;
-vector<long long> tprimes;
+vector<long long> tprimes(MAX);
 
 void sieve(){
 	vector<bool> isPrime(MAX, true);
-	isPrime[0] == isPrime[1] == false;
+	isPrime[0] = isPrime[1] = false;
 
 	for(int i=2; i*i <= MAX; i++){
 		if(isPrime[i]){
@@ -23,41 +23,39 @@ void sieve(){
 	}
 }
 
+bool isPrime(long long x){
+	long long lo = 0;
+	long long hi = tprimes.size()-1;
+
+	while(lo <= hi){
+		long long mid = lo + (hi - lo)/2;
+		if(tprimes[mid] == x){
+			return true;
+		} else if(tprimes[mid] < x){
+			lo = mid + 1;
+		} else {
+			hi = mid - 1;
+		}
+	}
+	return false;
+}
+
 int main(){
 	sieve();
 
-	int t;
-	cin >> t;
+	long long n;
+	cin >> n;
 
-	while(t--){
-		int n;
-		cin >> n;
+	vector<long long> a(n);
+	for(int i=0; i<n; i++){
+		cin >> a[i];
+	}
 
-		vector<int> a(n);
-		for(int i=0; i<n; i++){
-			cin >> a[i];
-		}
-
-		int lo = 0;
-		int hi = tprimes.size()-1;
-		bool found = false;
-
-		while(lo <= hi){
-			int mid = lo + (hi - lo)/2;
-
-			if(tprimes[mid] == 3){
-				found = true;
-			} else if(tprimes[mid] < 3){
-				lo = mid + 1;
-			} else {
-				hi = mid - 1;
-			}
-		}
-
-		if(!found){
-			cout << "Yes" << endl;
+	for(int i=0; i<a.size(); i++){
+		if(isPrime(a[i])){
+			cout << "YES" << endl;
 		} else {
-			cout << "No" << endl;
+			cout << "NO" << endl;
 		}
 	}
 }
