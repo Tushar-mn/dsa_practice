@@ -5,13 +5,15 @@ int main(){
 	int n;
 	cin >> n;
 
-	int count = 0;
+	int a = 0;
+	int b = 1;
 
-	while(n>0){
-		n = n/10;
+	for(int i=1; i<=n; i++){
 
-		count++;
+		cout << a << endl;
+		int next = a + b;
+
+		a = b;
+		b = next;
 	}
-cout << count;
-	
 }
