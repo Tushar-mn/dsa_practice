@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<bits/stdc++.h> 
 using namespace std;
 
 void printBinary(int num){
@@ -25,18 +25,17 @@ int main(){
 	printBinary(a | (1 << 1));
 	//output - 00000001011
 
-	//unset
+	//unset   
 	/*
 	 	000"1"001
 	 |	111"0"111
 	 	000"0"001
 	*/
-	// ~ tilda reverse the binary numbers
-
+	// ~ tilda reverse the binary numbers (0 will become 1 and 1 will become 0)
 	printBinary(a & ~(1<<i));
 	//output - 00000001001
 
-	//toggle
+	//toggle - 0 ko one banana and 1 ko 0
 	printBinary(a^(1<<2));
 	//output - 00000001101
 	printBinary(a^(1<<3));
