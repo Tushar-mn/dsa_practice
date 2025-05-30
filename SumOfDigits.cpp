@@ -2,24 +2,16 @@
 using namespace std;
 
 int main(){
-	int t;
-	cin>>t;
+    int n;
+    cin>>n;
 
-	while(t--){
-		int n;
-		cin>>n;
+    int sum = 0;
 
-		int res = 0;
+    while(n!=0){
+        int r = n%10;
+        sum = sum + r;
 
-		while(n != 0){
-			int r = n%10;
-			res += r;
-
-			n/=10;
-		}
-
-		cout<<res<<endl;
-	}
-
-
+        n = n/10;
+    }
+    cout<<sum;
 }
