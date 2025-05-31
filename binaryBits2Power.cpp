@@ -10,4 +10,4 @@ int main(){
 	} else {
 		cout << "power of 2";
 	}
-}
+} 
