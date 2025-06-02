@@ -1,32 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
-const int M = 1e9+7; 
+const long long M =  2760727302517;
 
-int 
+long long computeF(vector<int>& a){
+	int n = a.size();
+	int sum = 0;
 
-int bitMultiply(int a, int b){
-	int ans = 0;
-	while(b>0){
-		if(b&1){
-			ans = (ans + a)%M;
+	for(int i=0; i<n; i++){
+		for(int j=i; j<n; j++){
+			sum += (a[i] - a[j]);
 		}
 	}
 
-	a = (a + a)%10;
-	b >>= 1;
+	sum%=M;
+	if(sum < 0) sum += M;
+	return (sum * sum)%M;
 }
 
 int main(){
-	int t;
-	cin >> t;
+	int n;
+	cin >> n;
 
-	while(t--){
-		int n;
-		cin >> n;
-
-		vector<int> a(n);
-		for(int i=0; i<n; i++){
-			cin >> a[i];
-		}
+	vector<int> a(n);
+	for(int i=0; i<n; i++){
+		cin >> a[i];
 	}
+
+	cout << computeF(a) << endl;
+
 }
