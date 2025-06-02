@@ -8,18 +8,30 @@ int main(){
 
 	vector<int> a(n);
 	for(int i=0; i<n; i++){
-		cin >>  a[i];
+		cin >> a[i];
 	}
 
-	int x;
-	cin >> x;
+	vector<int> temp;
+	int newLength = 0;
 
-	int count = 0;
-	for(int i=0; i<a.size(); i++){
-		if(a[i] == x){
-			count++;
+	for(int i=0; i<n; i++){
+		bool isDuplicate = false; //check 
+
+		for(int j=0; j<newLength; j++){
+			if(a[i] == temp[j]){
+				isDuplicate = true;
+				break;
+			}
+		}
+
+		if(!isDuplicate){
+			temp.push_back(a[i]);
+			newLength++;
 		}
 	}
 
-	cout << count << endl;
+	for(int i=0; i<newLength; i++){
+		cout << temp[i] << " ";
+	}
+	cout << endl;
 }

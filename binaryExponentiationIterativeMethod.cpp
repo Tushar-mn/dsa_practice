@@ -1,4 +1,4 @@
-//recursive method
+//iterative method
 #include<bits/stdc++.h>
 using namespace std;
 const int M = 1e9+7;
@@ -14,6 +14,18 @@ int binExpRecur(int a, int b){
 	}
 }
 
+int binExpItr(int a, int b){
+	int ans = 1;
+	while(b > 0){
+		if(b&1){
+			ans = (ans * a)%M;
+		}
+		a = (a*a)%M;
+		b >>= 1; 
+	}
+	return ans;
+}
+
 int main(){
 	int a = 2, b = 13;
 	// for(int i=0; i<b; i++){ //O(n)
@@ -21,5 +33,6 @@ int main(){
 	// 	ans%=M;
 	// }
 
-	cout << binExpRecur(a,b);
+	cout << binExpRecur(a, b) << endl;
+	cout << binExpItr(a, b) << endl;
 }
