@@ -5,23 +5,27 @@ int main(){
 	int n;
 	cin >> n;
 
-	vector<int> a(n);
+	vector<int> digits(n);
 	for(int i=0; i<n; i++){
-		cin >> a[i];
+		cin >> digits[i];
 	}
 
-	vector<int> temp;
-
-	for(int i=0; i<n; i++){
-		if(i == n-1){
-			a[i] = a[i] + 1;
-			
+	for(int i=n-1; i>=0; i--){
+		if(digits[i]<9){
+			digits[i]++;
+			for(int d: digits){
+				cout << d << " ";
+			}
+			cout << endl;
+			return 0;
 		}
-		temp.push_back(a[i]);
+		digits[i] = 0;
 	}
 
-	for(int i=0; i<temp.size(); i++){
-		cout << temp[i] << " ";
+	//if all elements 9 then this special case will help
+	digits.insert(digits.begin(), 1);
+	for(int i=0; i<digits.size(); i++){
+		cout << digits[i] << " ";
 	}
 	cout << endl;
 }
