@@ -17,6 +17,7 @@ public:
                 divisor.push_back(i);
             }
         }
+        
         int count = 0;
         for(int i: divisor){
             count++;
