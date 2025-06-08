@@ -1,58 +1,38 @@
-#include<iostream>
-#include<climits> // For INT_MAX
+#include<bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5+10;
-int a[N];
-
-void merge(int l, int r, int mid) {
-    int l_sz = mid - l + 1;
-    int r_sz = r - mid;
-
-    int L[l_sz + 1], R[r_sz + 1]; // +1 for sentinel values (INT_MAX)
-
-    for(int i = 0; i < l_sz; i++) {
-        L[i] = a[l + i];
-    }
-    for(int i = 0; i < r_sz; i++) {
-        R[i] = a[mid + 1 + i];
-    }
-
-    L[l_sz] = R[r_sz] = INT_MAX; // Sentinel values
-
-    int l_i = 0, r_i = 0;
-    for(int i = l; i <= r; i++) {
-        if(L[l_i] <= R[r_i]) {
-            a[i] = L[l_i];
-            l_i++;
-        } else {
-            a[i] = R[r_i];
-            r_i++;
-        }
-    }
+void reverse(int arr[], int first, int second){
+	while(first<second){
+		swap(arr[first], arr[second]);
+		first++;
+		second--;
+	}
 }
 
-void mergeSort(int l, int r) {
-    if(l >= r) return; // Base case: only 1 element
+void rotate(int arr[], int n, int k){
+	k = k%n;
 
-    int mid = (l + r) / 2;
-    mergeSort(l, mid);
-    mergeSort(mid + 1, r);
-    merge(l, r, mid);
+	reverse(arr, 0, n-1); //array reverse
+	reverse(arr, 0, k-1); //first to k 
+	reverse(arr, k, n-1); // k to n-1
 }
 
-int main() {
-    int n;
-    cin >> n;
+int main(){
+	int n;
+	cin >> n;
 
-    for(int i = 0; i < n; i++) {
-        cin >> a[i];
-    }
+	int arr[n];
+	for(int i=0; i<n; i++){
+		cin >> arr[i];
+	}
 
-    mergeSort(0, n - 1);
+	int k;
+	cin >> k;
 
-    for(int i = 0; i < n; i++) {
-        cout << a[i] << " ";
-    }
-    cout << endl;
+	rotate(arr,n, k);
+
+	for(int i=0; i<n; i++){
+		cout << arr[i] << " ";
+	}
+	cout << endl;
 }

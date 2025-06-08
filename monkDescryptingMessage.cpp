@@ -10,9 +10,9 @@ vector<int> DistinctPF(int x){
 	vector<int> ans;
 	while(x>1){
 		int pf = hp[x];
-		if(x%pf == 0){
-			x /= pf;
-			ans.push_back(pf);
+		ans.push_back(pf);
+		while(x%pf == 0){
+			x /= pf;	
 		}
 	}
 	return ans;
@@ -33,12 +33,12 @@ int main(){
 	for(int i=0; i<n; i++){
 		int x; 
 		cin >> x;
-		hsh[x]++;
+		hsh[x]=1;
 	}
 
 	for(int i=2; i<N; i++){
 		if(hsh[i]){
-			for(long long j=i; j<N; j+=i){
+			for(long long j=i; j<N; j*=i){
 				canRemove[j] = 1;
 			}
 		}
@@ -52,11 +52,10 @@ int main(){
 		bool isPossible = false;
 		for(int i=0; i<pf.size(); i++){
 			for(int j=i; j<pf.size(); j++){
-				int product = pf[i] * pf[j];
-				if(i == j && x % product != 0)
-					continue;
+				int product = 1LL * pf[i] * pf[j];
+				if(i == j && x % product != 0) continue;
 				int toRemove = x/product;
-				if(canRemove[toRemove] == 1){
+				if(canRemove[toRemove] == 1 || toRemove == 1){
 					isPossible = true;
 					break;
 				}
