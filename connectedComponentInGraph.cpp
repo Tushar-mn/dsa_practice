@@ -5,11 +5,15 @@ const int N = 1e5+10;
 vector<int> g[N];
 bool vis[N];
 
-bool dfs(int vertex){
+vector<vector<int>> cc;
+vector<int> current_cc;
+
+void dfs(int vertex){
 	//Take action on vertex after entering the vertex
 	//for(int child: g[vertex]){
 	//if(vis[vertex]) return;
 	vis[vertex] = true;
+	current_cc.push_back(vertex);
 	for(int child: g[vertex]){
 		//take action action on child before entering the child node
 		// cout << "par" << vertex << "child" << child << endl;
@@ -23,12 +27,32 @@ bool dfs(int vertex){
 //O(V+E)
 
 int main(){
-	int n,m;
-	cin >> n >> m; //n -> vertices , m -> edges
-	for(int i=0; i<9; i++){
-		int v1, v2;
-		cin >> v1, v2;
-		g[v1].push_back(v2);
-		g[v2].push_back(v1);
+	int n, e;
+	cin >> n >> e;
+
+	for(int i=0; i<e; i++){
+		int x,y;
+		cin >> x >> y;
+
+		g[x].push_back(y);
+		g[y].push_back(x);//for edges for both sides <-->
 	}
-}
+
+	int ct=0;
+	for(int i=1; i<=n; i++){
+		if(vis[i]) continue;
+		current_cc.clear();
+		dfs(i);
+		cc.push_back(current_cc);
+		ct++;
+	}
+
+	cout << cc.size() << endl;
+
+	for(auto c_cc: cc){
+		for(int vertex: c_cc){
+			cout << vertex << " ";
+		}
+		cout << endl;
+	}
+}	
