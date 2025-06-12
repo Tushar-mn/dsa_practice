@@ -11,7 +11,7 @@ bool dfs(int vertex, int par){
 	bool isLoopExist = false;
 	for(int child: g[vertex]){
 		if(vis[child] && child == par) continue;
-		if(vis[child])return true;
+		if(vis[child]) return true;
 
 		isLoopExist |= dfs(child, vertex);
 	}

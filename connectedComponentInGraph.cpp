@@ -46,7 +46,7 @@ int main(){
 		cc.push_back(current_cc);
 		ct++;
 	}
-
+ 
 	cout << cc.size() << endl;
 
 	for(auto c_cc: cc){
