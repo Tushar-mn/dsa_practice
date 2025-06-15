@@ -44,7 +44,7 @@ public:
 
 		for(int i=0; i<n; i++){
 			for(int j=0; j<m; j++){
-				if(atlantis[i][j] && pacific[i][j]){
+				if(atlantic[i][j] && pacific[i][j]){
 					result.push_back({i, j});
 				}
 			}
