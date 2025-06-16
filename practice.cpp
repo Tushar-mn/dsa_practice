@@ -1,32 +1,27 @@
 #include<bits/stdc++.h>
 using namespace std;
+class Solution {
+public:
+    int strStr(string haystack, string needle) {
+        int h = haystack.size();
+        int n = needle.size();
 
+        for(int i=0; i<=h-n; i++){
+            if(haystack.substr(i, n) == needle){
+                return i;
+            }
+        }
+        return -1;
+    }
+};
 int main(){
-	int t;
-	cin >> t;
+	string haystack;
+	cin >> haystack;
 
-	while(t--){
-		int n,m;
-		cin >> n >> m;
+	string needle;
+	cin >> needle;
 
-		int total = n+m;
+	Solution sol;
 
-		vector<int> a(total);
-		for(int i=0; i<total; i++){
-			cin >> a[i];
-		}
-
-		set<int> s;
-		for(int i=0; i<n; i++){
-			s.insert(a[i]);
-		}
-
-		for(int i=n; i<total; i++){
-			if(s.count(a[i])){
-				cout << "Yes" << endl;
-			} else {
-				cout << "No" << endl;
-			}
-		}
-	}
+	cout << sol.strStr(haystack, needle);
 }
