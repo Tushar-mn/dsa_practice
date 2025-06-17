@@ -1,27 +1,32 @@
 #include<bits/stdc++.h>
 using namespace std;
-class Solution {
-public:
-    int strStr(string haystack, string needle) {
-        int h = haystack.size();
-        int n = needle.size();
+ 
+bool cmp(pair<string, int> a, pair<string, int> b){
+	if(a.second != b.second){
+		return a.second > b.second; //decending order
+	}
+	return a.first < b.first;
+}
 
-        for(int i=0; i<=h-n; i++){
-            if(haystack.substr(i, n) == needle){
-                return i;
-            }
-        }
-        return -1;
-    }
-};
+bool cmp1(pair<string, int> a, pair<string, int> b){
+	if(a.second != b.second){
+		return a.second < b.second; // ascending order
+	}
+	return a.first > b.first;
+}
+ 
 int main(){
-	string haystack;
-	cin >> haystack;
-
-	string needle;
-	cin >> needle;
-
-	Solution sol;
-
-	cout << sol.strStr(haystack, needle);
+	int n;
+	cin >> n;
+ 
+	vector<pair<string,int>> a(n);
+	for(int i=0; i<n; i++){
+		cin >> a[i].first >> a[i].second;
+	}
+ 
+	sort(a.begin(), a.end(), cmp);
+ 
+	for(int i=0; i<n; i++){
+		cout << a[i].first << " " << a[i].second << endl;
+	}
 }
