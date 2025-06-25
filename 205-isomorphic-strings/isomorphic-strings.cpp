@@ -28,7 +28,6 @@ public:
                 tc[c2] = c;
             }
         }
-
         return true;
     }
 };
