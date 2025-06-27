@@ -13,12 +13,13 @@ public:
                     return false;
 
             char top = st.top();
-            st.pop();
 
-            if(top != '(' && ch == ')' ||
-                top != '{' && ch =='}' ||
-                top != '[' && ch == ']'
+            if(top == '(' && ch == ')' ||
+                top == '{' && ch =='}' ||
+                top == '[' && ch == ']'
             ){
+                st.pop();
+            } else {
                 return false;
             }
         }
