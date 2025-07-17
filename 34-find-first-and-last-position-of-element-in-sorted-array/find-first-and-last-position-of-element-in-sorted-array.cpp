@@ -1,27 +1,27 @@
 class Solution {
 public:
     vector<int> searchRange(vector<int>& nums, int target) {
-        int firstIndex = first(nums, target);
-        int lastIndex = last(nums, target);
+        int f = first(nums, target);
+        int l = last(nums, target);
 
-        return {firstIndex, lastIndex};
+        return{f, l};
     }
 
     int first(vector<int>& nums, int target){
         int lo = 0;
-        int hi = nums.size() - 1;
+        int hi = nums.size()-1;
         int res = -1;
 
         while(lo <= hi){
-            int mid = lo + (hi - lo) / 2;
+            int mid = lo + (hi-lo)/2;
 
             if(nums[mid] == target){
-                res = mid;       // store current match
-                hi = mid - 1;    // move left
+                res = mid;
+                hi = mid-1;
             } else if(nums[mid] < target){
-                lo = mid + 1;
+                lo = mid+1;
             } else {
-                hi = mid - 1;
+                hi = mid-1;
             }
         }
         return res;
@@ -29,21 +29,22 @@ public:
 
     int last(vector<int>& nums, int target){
         int lo = 0;
-        int hi = nums.size() - 1;
+        int hi = nums.size()-1;
         int res = -1;
 
         while(lo <= hi){
-            int mid = lo + (hi - lo) / 2;
+            int mid = lo + (hi-lo)/2;
 
             if(nums[mid] == target){
-                res = mid;       // store current match
-                lo = mid + 1;    // move right
+                res = mid;
+                lo = mid+1;
             } else if(nums[mid] < target){
-                lo = mid + 1;
+                lo = mid+1;
             } else {
-                hi = mid - 1;
+                hi = mid-1;
             }
         }
+
         return res;
     }
 };
