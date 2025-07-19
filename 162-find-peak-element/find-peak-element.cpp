@@ -7,10 +7,10 @@ public:
         while(lo < hi){
             long long mid = lo + (hi - lo)/2;
 
-            if(nums[mid] > nums[mid+1]){
-                hi = mid;
-            } else {
+            if(nums[mid] <= nums[mid+1]){
                 lo = mid+1;
+            } else {
+                hi = mid;
             }
         }
 
