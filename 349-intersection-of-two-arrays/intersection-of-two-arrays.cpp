@@ -21,7 +21,7 @@ public:
 
     vector<int> intersection(vector<int>& nums1, vector<int>& nums2) {
         sort(nums2.begin(), nums2.end());        
-        unordered_set<int> inter;
+        set<int> inter;
 
         for(int num: nums1){
             if(BinarySearch(nums2, num)){
