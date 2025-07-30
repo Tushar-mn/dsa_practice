@@ -1,22 +1,29 @@
 class Solution {
 public:
     bool isUgly(int n) {
-        if(n <= 0){
+        if(n<=0) {
             return false;
         }
 
-        while(n%2 == 0){
-            n /= 2;
-        } 
-
-        while(n%3 == 0){
-            n /= 3;
+        vector<int>arr;
+        while(n%2==0){
+            arr.push_back(2);
+            n = n/2;
         }
-
-        while(n%5 == 0){
-            n /= 5;
+        for(int i = 3; 1LL*i*i<=n; i+=2){
+            while(n%i == 0){
+                arr.push_back(i);
+                n = n/i;
+            }  
         }
-
-        return n == 1;
+        if(n>2){
+            arr.push_back(n);
+        }
+        for(int num : arr){
+            if((num != 2) && (num != 3) && (num != 5)){
+                return false;
+            }
+        }
+        return true;
     }
 };
