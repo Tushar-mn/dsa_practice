@@ -15,10 +15,8 @@ public:
                     temp.push_back(num%10);
                     num /= 10;
                 }
-
                 reverse(temp.begin(), temp.end());
             }
-
             res.insert(res.end(), temp.begin(), temp.end());
         }
 
