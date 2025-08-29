@@ -1,6 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
-vector<vector<int>> sums;
+
+int rotate(int n, int k, vector<int> a){
+	
+}
 
 int main(){
 	int n;
@@ -11,8 +14,8 @@ int main(){
 		cin >> a[i];
 	}
 
-	int sum = 0;
-	for(int i=0; i<n; i++){
-		sum += a[i]+a[i+1]+a[]
-	}
+	int k;
+	cin >> k;
+
+	
 }

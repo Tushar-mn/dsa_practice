@@ -26,7 +26,7 @@ void sieve(){
 bool isPrime(long long x){
 	long long lo = 0;
 	long long hi = tprimes.size()-1;
-
+ 
 	while(lo <= hi){
 		long long mid = lo + (hi - lo)/2;
 		if(tprimes[mid] == x){

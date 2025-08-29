@@ -18,15 +18,18 @@ int main(){
 				count++;
 
 				if(count > 3){
-			found = false;
-		} else if(count < 3){
-			found = false;
-		} else {
-			found = true;
-		}
+					found = false;
+				} else if(count < 3){
+					found = false;
+				} else {
+					found = true;
+				}
 			}
 		}
+		if(found){
+			cout<<"no"<<endl;
+		} else {
+			cout<<"yes"<<endl;
+		}
 	}
-
-	cout << found << endl;
 }
