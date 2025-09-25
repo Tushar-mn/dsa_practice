@@ -1,20 +1,20 @@
 class Solution {
 public:
-    bool isPalindrome(long long x) {
-        if(x < 0){
-            return false;
-        }
-
-        long long rev = 0;
-        long long temp = x;
+    bool isPalindrome(int x) {
+        int temp = x;
+        long long res = 0;
 
         while(temp > 0){
-            long long rm = temp % 10;
-            rev = rev*10 + rm;
+            int rem = temp % 10;
+            res = res*10 + rem;
 
             temp /= 10;
         }
 
-        return rev == x;
+        if(x == res){
+            return true;
+        } else {
+            return false;
+        }
     }
 };
