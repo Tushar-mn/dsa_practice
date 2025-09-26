@@ -4,7 +4,7 @@ public:
         int lo = 0;
         int hi = s.size()-1;
 
-        while(lo <= hi){
+        while(lo < hi){
             int temp = s[lo];
             s[lo] = s[hi];
             s[hi] = temp;
