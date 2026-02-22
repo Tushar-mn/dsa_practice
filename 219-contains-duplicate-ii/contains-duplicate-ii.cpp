@@ -7,6 +7,7 @@ public:
         for(int i=0; i<n; i++){
             if(s.count(nums[i])){
                 return true;
+                break;
             }
 
             s.insert(nums[i]);
