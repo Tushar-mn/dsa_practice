@@ -9,9 +9,8 @@ public:
             }
             digits[i] = 0;
         }
-
-        vector<int> result(n + 1, 0); // e.g. [0, 0, 0, 0]
-        result[0] = 1;                // [1, 0, 0, 0]
-        return result;
+        
+        digits.insert(digits.begin(), 1);
+        return digits;
     }
 };
